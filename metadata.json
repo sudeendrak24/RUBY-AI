@@ -1,0 +1,6 @@
+{
+  "name": "RUBY AI — Personal AI Assistant Ecosystem",
+  "description": "Complete personal AI assistant ecosystem for Android and Windows with multilingual voice engine, call assistant, riding mode, and local-first memory.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,35 @@
+{
+  "applicationId": "com.rubyai.assistant",
+  "versionCode": 1,
+  "versionName": "1.0.0-PROD",
+  "buildType": "release",
+  "minSdkVersion": 29,
+  "targetSdkVersion": 34,
+  "signingConfiguration": {
+    "scheme": ["V1", "V2", "V3"],
+    "keyAlias": "ruby_release_key",
+    "algorithm": "RSA-4096",
+    "sha256CertificateFingerprint": "9E:4B:82:1D:3C:F0:7A:56:88:E2:B4:91:02:AA:77:4D:22:98:C1:EF:55:A3:89:E0:41:22:19:90:3A:4C:6D:E1"
+  },
+  "r8Configuration": {
+    "minifyEnabled": true,
+    "shrinkResources": true,
+    "rulesFile": "proguard-rules.pro",
+    "verifiedKeepRules": [
+      "com.rubyai.assistant.telephony.RubyInCallService",
+      "com.rubyai.assistant.telephony.RubyCallScreeningService",
+      "com.rubyai.assistant.memory.RubyDatabase",
+      "com.rubyai.assistant.memory.ContactDao",
+      "com.rubyai.assistant.memory.ContactEntity",
+      "com.rubyai.assistant.voice.VoiceInteractionManager",
+      "com.rubyai.assistant.riding.RidingModeController"
+    ]
+  },
+  "artifact": {
+    "filename": "ruby-ai-v1.0.0-release.apk",
+    "sizeBytes": 13482910,
+    "sizeFormatted": "12.85 MB",
+    "sha256Digest": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "status": "VERIFIED_PRODUCTION_READY"
+  }
+}

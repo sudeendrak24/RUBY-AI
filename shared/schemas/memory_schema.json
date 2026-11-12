@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RubyAI_Memory_Schema",
+  "description": "Structured local-first personal memory schema for user preferences, routines, contact relationships, and encrypted secrets",
+  "type": "object",
+  "properties": {
+    "user_profile": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "default_language": { "type": "string", "enum": ["en", "ta", "hi"] },
+        "voice_speed": { "type": "number", "default": 1.0 },
+        "wake_word": { "type": "string", "default": "Hey Ruby" }
+      },
+      "required": ["name", "default_language"]
+    },
+    "contacts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "name": { "type": "string" },
+          "aliases": { "type": "array", "items": { "type": "string" } },
+          "phone_number": { "type": "string" },
+          "is_emergency_contact": { "type": "boolean" },
+          "riding_bypass": { "type": "boolean" },
+          "relationship": { "type": "string" }
+        },
+        "required": ["id", "name", "phone_number"]
+      }
+    },
+    "routines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": { "type": "string" },
+          "trigger_phrase": { "type": "string" },
+          "language": { "type": "string" },
+          "steps": { "type": "array", "items": { "type": "string" } },
+          "requires_confirmation": { "type": "boolean" }
+        }
+      }
+    },
+    "preferences": {
+      "type": "object",
+      "properties": {
+        "call_assistant_enabled": { "type": "boolean" },
+        "riding_mode_call_policy": { "type": "string", "enum": ["NORMAL", "AI_ASSISTANT", "EMERGENCY_ONLY"] },
+        "auto_sms_template": { "type": "string" },
+        "ai_disclosure_enabled": { "type": "boolean", "const": true },
+        "voice_feedback_enabled": { "type": "boolean" }
+      }
+    }
+  }
+}

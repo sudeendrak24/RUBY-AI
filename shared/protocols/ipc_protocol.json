@@ -1,0 +1,66 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RubyAI_IPC_Protocol",
+  "description": "Cross-device communication protocol between RUBY AI Windows Brain and Android Companion App",
+  "version": "1.0.0",
+  "transport": {
+    "rest_port": 8443,
+    "websocket_port": 8444,
+    "encryption": "AES-256-GCM / TLS 1.3",
+    "auth_header": "Authorization: Bearer <HMAC-SHA256>"
+  },
+  "message_types": {
+    "VOICE_COMMAND": {
+      "direction": "Android -> Windows",
+      "fields": {
+        "command_id": "UUID",
+        "audio_stream_uri": "string (optional)",
+        "transcript": "string",
+        "detected_language": "en | ta | hi",
+        "confidence": "float (0.0 - 1.0)",
+        "timestamp": "ISO8601"
+      }
+    },
+    "COMMAND_EXECUTE_RESULT": {
+      "direction": "Windows -> Android",
+      "fields": {
+        "command_id": "UUID",
+        "status": "SUCCESS | FAILED | CONFIRMATION_REQUIRED",
+        "speech_response": "string",
+        "action_taken": "string",
+        "visual_payload": "object (optional)"
+      }
+    },
+    "TELEPHONY_CALL_EVENT": {
+      "direction": "Android <-> Windows",
+      "fields": {
+        "call_id": "UUID",
+        "event_type": "INCOMING_RINGING | AI_SCREENING_STARTED | CALL_CONNECTED | MESSAGE_RECORDED | CALL_ENDED",
+        "caller_number": "E.164 string",
+        "caller_name": "string (optional)",
+        "carrier": "Airtel India | Jio | Vi | BSNL",
+        "riding_mode_active": "boolean",
+        "transcribed_message": "string (optional)"
+      }
+    },
+    "RIDING_MODE_STATE": {
+      "direction": "Android -> Windows",
+      "fields": {
+        "is_active": "boolean",
+        "policy": "NORMAL | AI_ASSISTANT | EMERGENCY_ONLY",
+        "speed_kmh": "float",
+        "connected_headset": "string (optional)"
+      }
+    },
+    "SYSTEM_TELEMETRY": {
+      "direction": "Windows -> Android",
+      "fields": {
+        "cpu_usage_pct": "float",
+        "ram_usage_mb": "float",
+        "battery_pct": "integer",
+        "active_processes": "array of strings",
+        "brain_uptime_seconds": "integer"
+      }
+    }
+  }
+}

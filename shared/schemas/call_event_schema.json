@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RubyAI_CallEvent_Schema",
+  "description": "Telephony event schema for Airtel India and Indian carrier SIM call state synchronization",
+  "type": "object",
+  "properties": {
+    "call_session_id": { "type": "string" },
+    "sim_slot": { "type": "integer", "enum": [0, 1] },
+    "carrier_name": { "type": "string" },
+    "caller_number": { "type": "string" },
+    "caller_name": { "type": "string" },
+    "call_direction": { "type": "string", "enum": ["INCOMING", "OUTGOING"] },
+    "ai_answering_invoked": { "type": "boolean" },
+    "disclosure_announced": { "type": "boolean" },
+    "caller_intent": { "type": "string" },
+    "recorded_voicemail_summary": { "type": "string" },
+    "start_time": { "type": "string", "format": "date-time" },
+    "end_time": { "type": "string", "format": "date-time" },
+    "call_duration_seconds": { "type": "integer" }
+  },
+  "required": ["call_session_id", "caller_number", "call_direction", "start_time"]
+}
